@@ -1,0 +1,52 @@
+{% extends 'nav.html' %}
+{% load staticfiles %}
+
+
+
+{% block body %}
+
+<div style="margin=1000px;">
+
+
+    {% for i in pro %}
+    <a href="/pdetails/{{i.pid}}"><img src="{{i.img1.url}}" height="200px" width="200px">{{i.name}}</a>
+    {% endfor %}
+
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

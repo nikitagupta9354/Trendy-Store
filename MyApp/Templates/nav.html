@@ -1,0 +1,487 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link rel="stylesheet" href="{% static 'a.css' %}" Type="text/css" media="all">
+    {% block t %}
+ <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'css/bootstrap-theme.min.css' %}" rel="stylesheet" media="screen">
+<link rel="icon" href="C:\Users\Nikita\Downloads\baseline-favorite_border-black-18\2x\baseline-favorite_border-black-18dp.png">
+
+<!--booststrap-->
+      <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="all">
+      <!--//booststrap end-->
+      <!-- font-awesome icons -->
+      <link href="{% static 'css/fontawesome-all.min.css' %}" rel="stylesheet" type="text/css" media="all">
+      <!-- //font-awesome icons -->
+      <!-- For Clients slider -->
+      <link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="all" />
+      <!--flexs slider-->
+      <link href="{% static 'css/JiSlider.css' %}" rel="stylesheet">
+      <!--Shoping cart-->
+      <link rel="stylesheet" href="{% static 'css/shop.css' %}" type="text/css" />
+      <!--//Shoping cart-->
+      <!--stylesheets-->
+      <!--link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' media="all"-->
+      <!--//stylesheets-->
+      <link href="//fonts.googleapis.com/css?family=Sunflower:500,700" rel="stylesheet">
+      <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+
+
+<!-- Custom-Files -->
+	<link rel="{% static 'stylesheet" href="css/bootstrap.css' %}">
+	<!-- Bootstrap-Core-CSS -->
+	<link href="{% static 'css/css_slider.css' %}" type="text/css" rel="stylesheet" media="all">
+	<!-- css slider -->
+	<link rel="{% static 'stylesheet" href="css/style.css' %}" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+	<!-- Font-Awesome-Icons-CSS -->
+	<!-- //Custom-Files -->
+
+	
+<link rel="stylesheet" href="{% static 'a.css' %}" Type="text/css" media="all">
+
+<style>
+
+    @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+
+.top-right-info li a {
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 2px;
+    display: inline-block;
+    transition: 0.3s all;
+    -webkit-transition: 0.3s all;
+    -moz-transition: 0.3s all;
+    -o-transition: 0.3s all;
+    -ms-transition: 0.3s all;
+}
+
+.top-right-info li a span {
+    color: #fff;
+    font-size: 14px;
+    background: #1da1f2;
+}
+
+.top-right-info li.google-w3 a {
+    background: #F44336;
+}
+
+}
+
+.top-right-info li p {
+    margin-right: 6px;
+    font-size: 16px;
+}
+
+.top-right-info li.facebook-w3 a {
+    background: #3b5998;
+}
+
+.top-right-info li.twitter-w3 a {
+.top-right-info li.dribble-w3 a {
+    background: #ea4c89;
+}
+
+.top-right-info li {
+    display: inline-block;
+}
+
+nav li:last-child {
+    margin: 0;
+}
+
+.text-wh {
+    color: #fff;
+}
+img.img-fluid.sub-img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+
+.navbar{
+font-size: 20px;
+font-weight: 780;
+	font-size: .95rem;
+	letter-spacing: .1rem;
+	
+
+}
+.navbar-light .navbar-nav .nav-link 
+{ font-family: 'times new roman', Helvetica, Arial, sans-serif;
+ color: black;
+padding-top: 1.4rem;
+}
+ 
+ .navbar-brand {
+ 
+  color: #d7e2e9;
+ padding-top: 1.4rem;
+}
+
+  .btn{background-color:#fec33a;}
+  <script async>(function(w, d) { w.CollectId = "5e994ebc2bf69958e24c5f9f"; var h = d.head || d.getElementsByTagName("head")[0];var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);</script>
+</head>
+  {% endblock t %}
+ 
+</style>
+
+
+
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+<div  style="color:#321232;">
+	<a class="navbar-brand" >
+		<i class="fa fa-heart" style="color:#ab186e;"></i>
+		The Trendy Store
+</a>
+</div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li>
+        <a class="nav-link" href="/sop/sample/">Products</a>
+      </li>
+
+		{% if user.is_authenticated %}
+		 <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink31" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user}} </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink31">
+                                <a class="dropdown-item" href="/logout/"> <i class="fa fa-user"></i>Log Out</a>
+								<a class="dropdown-item" href="/c/"><i class="fa fa-shopping-cart"> </i>Cart</a>
+								 <a class="dropdown-item" href="/wishlist/"><i class="fa fa-heart"></i>Orders</a>
+                            </div>
+			 </li>
+			 {% else %}
+			  <a class="nav-link " href="/login/" tabindex="-1" aria-disabled="true" class="floatRight">Login</a>
+			 {% endif %}
+
+      <li class="nav-item">
+<a class="nav-link " href="/signup/" tabindex="-1" aria-disabled="true" class="floatRight">Sign Up</a>
+      </li>
+ <li class="nav-item">
+	 {% if user.is_authenticated %}
+        <a class="nav-link " href="/profile/{{user}}" tabindex="-1" aria-disabled="true" class="floatRight">Profile</a>
+	 {% endif %}
+ </li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+    </ul>
+    
+  </div>
+</nav>
+{% block body %}
+<section><p><img src="{% static 'cart.jpg' %} " class="floatRight" style="width:800px;"><br><br><br><br><br><br><h1 style="color:#338DFF">The Trendy Store<br><h1 style="color:#338DFF"></h2></h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolorLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.abcdeeeee eeeeeeeeeee eeeee eeeeeeeeee<br><br>
+<br> <button class="btn btn-primary">Order Now!</button></p></section>
+<br>
+ <!--div class=" caption text-center">
+ <div id="course">
+        <div class="col-12 narrow text-center">
+            <h1><center> We are <span class="type"></span></h1>
+            <script src="typed.js"> </script>
+<script>
+
+  var typed3 = new Typed(".type", {
+    strings: ["craftsmen.", "leaders.", "manufacturers.","Gupta Industries."],
+    typeSpeed: 50,
+    backSpeed: 30,
+    smartBackspace: true, // this is a default
+    loop: true
+  })
+
+</script>
+
+<p class="lead"> Sign up to get our latest updates </p>
+<br>
+<a class="btn btn-secondary btn-md" href="/signup/" target="_blank"> Sign up </a>
+
+</div>
+</div-->
+
+<section class="blog_w3ls py-5">
+		<div class="container pb-xl-5 pb-lg-3">
+			<div class="title-section text-center mb-md-5 mb-4">
+				<p class="w3ls-title-sub">Tasty</p>
+				<h3 class="w3ls-title">Our <span>Products</span></h3>
+			</div>
+			<div class="row">
+				<!-- blog grid -->
+				{% for i in Pro %}
+				{% if forloop.counter < 4 %}
+				<div class="col-lg-4 col-md-6">
+					<div class="card border-0 med-blog">
+						<div class="card-header p-0">
+							<a href="menu.html">
+								<img class="card-img-bottom" src="{{i.img1.url }}" alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body border border-top-0">
+							<h5 class="blog-title card-title m-0"><a href="menu.html">{{ i.name }}</a></h5>
+							<p class="mt-3">{{ i.description }}</p>
+							<a href="menu.html" class="btn button-w3ls mt-4 mb-3">View More
+								<span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- //specials -->
+
+<!-- two grids -->
+	<section class="offer pt-lg-3">
+		<div class="row no-gutters">
+			<div class="col-md-6 p-0">
+				<div class="blog-sec-w3">
+					{% for i in Pro %}
+					{% if forloop.counter == 3 %}
+					<img class="card-img-bottom" src="{{i.img1.url }}" alt="Card image cap">
+					<div class="text-blog-w3 text-center p-2">
+						<h4 class="text-wh mb-3"><a href="/sop2/HERE&NOW">HERE&NOW</a></h4>
+
+
+					</div>
+					 {% endif %}
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-md-6 p-0">
+				<div class="blog-sec-w3 blog-sec-w3-2">
+					<div class="text-blog-w3 text-center p-2">
+							{% for i in Pro %}
+					{% if forloop.counter == 4 %}
+					<img class="card-img-bottom" src="{{i.img1.url }}" alt="Card image cap">
+					<div class="text-blog-w3 text-center p-2">
+						<h4 class="text-wh mb-3"><a href="/sop2/DressBerry">DressBerry</a></h4>
+
+
+					</div>
+					 {% endif %}
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- //two grids -->
+
+	<!-- services -->
+	<section class="middle py-5" id="services">
+		<div class="container py-xl-5 py-lg-3">
+			<div class="title-section text-center mb-md-5 mb-4">
+				<p class="w3ls-title-sub">Our Work</p>
+				<h3 class="w3ls-title mb-3">Excellent <span>Services</span></h3>
+			</div>
+			<div class="row grids-w3 py-xl-5 py-lg-4 pt-lg-0 pt-4">
+				<div class="col-lg-5 w3pvt-lauits_banner_bottom_left">
+					<div class="row">
+						<div class="col-8 wthree_banner_bottom_grid_right text-right">
+							<h4 class="mb-3"><a href="login.html">Free Shipping</a></h4>
+							<p>Morbi viverra lacus commodo felis semper lectus feugiat.</p>
+						</div>
+						<div class="col-4 wthree_banner_bottom_grid_left text-lg-right text-center">
+							<img src="{% static 'shipping.png' %}" alt="" class="img-fluid">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 w3pvt-lauits_banner_bottom_left">
+
+				</div>
+				<div class="col-lg-5 w3pvt-lauits_banner_bottom_left mt-lg-0 mt-4">
+					<div class="row">
+						<div class="col-4 wthree_banner_bottom_grid_left text-lg-right text-center">
+							<img src="{% static 'reply.png' %}" alt="" class="img-fluid">
+						</div>
+						<div class="col-8 wthree_banner_bottom_grid_right">
+							<h4 class="mb-3"><a href="login.html">Free & Easy Returns</a></h4>
+							<p>Morbi viverra lacus commodo felis semper lectus feugiat.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row grids-w3 py-xl-5 py-lg-4 mt-lg-0 mt-4">
+				<div class="col-lg-4 w3pvt-lauits_banner_bottom_left">
+					<div class="row">
+						<div class="col-8 wthree_banner_bottom_grid_right text-right pl-lg-0">
+							<h4 class="mb-3"><a href="login.html">Online Order</a></h4>
+							<p>Morbi viverra lacus commodo felis semper lectus feugiat.</p>
+						</div>
+						<div class="col-4 wthree_banner_bottom_grid_left text-lg-right text-center pr-lg-0">
+						<img src="{% static 'shop.png' %}" alt="" class="img-fluid">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 w3pvt-lauits_banner_bottom_left pr-0">
+
+				</div>
+				<div class="col-lg-4 w3pvt-lauits_banner_bottom_left mt-lg-0 mt-4">
+					<div class="row">
+						<div class="col-4 wthree_banner_bottom_grid_left text-lg-right text-center pl-lg-0">
+							<img src="{% static 'support.png'%}" alt="" class="img-fluid">
+						</div>
+						<div class="col-8 wthree_banner_bottom_grid_right pr-lg-0">
+							<h4 class="mb-3"><a href="login.html">24/7 Support</a></h4>
+							<p>Morbi viverra lacus commodo felis semper lectus feugiat.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="img-blog-2">
+			<img src="" alt="" class="img-fluid">
+		</div>
+	</section>
+	<!-- //services -->
+<br><br><br>
+<!-- slides images -->
+	<section class="wthree-slider">
+
+	</section>
+	<!-- //slides images -->
+
+	<!-- newsletter -->
+
+	<!-- //newsletter -->
+{% endblock body %}
+	<!-- footer -->
+	<footer class="py-5">
+		<div class="container py-xl-4">
+			<div class="row footer-top">
+				<div class="col-lg-4 footer-grid_section_1its footer-text">
+					<!-- logo -->
+					<h2>
+						<a class="logo text-wh" href="index.html">
+							<img src="images/logo.png" alt="" class="img-fluid"><span>The </span> Trendy Store
+						</a>
+					</h2>
+					<!-- //logo -->
+					<p class="mt-lg-4 mt-3 mb-lg-5 mb-4">Sed ut perspiciatis unde omnis iste natus errorhjhsit lupt
+						atem
+						accursit lupt atem accu
+						dfdsa
+						ntium doloremque laudan tium accu santium dolore.</p>
+					<!-- social icons -->
+					<ul class="top-right-info">
+						<li>
+							<p>Follow As:</p>
+						</li>
+						<li class="facebook-w3">
+							<a href="#facebbok">
+								<span class="fa fa-facebook-f"></span>
+							</a>
+						</li>
+						<li class="twitter-w3">
+							<a href="#twitter">
+								<span class="fa fa-twitter"></span>
+							</a>
+						</li>
+						<li class="google-w3">
+							<a href="#google">
+								<span class="fa fa-google-plus"></span>
+							</a>
+						</li>
+						<li class="dribble-w3">
+							<a href="#dribble">
+								<span class="fa fa-dribbble"></span>
+							</a>
+						</li>
+					</ul>
+					<!-- //social icons -->
+				</div>
+				<div class="col-lg-4 footer-grid_section_1its my-lg-0 my-sm-4 my-4">
+					<div class="footer-title">
+						<h3>Contact Us</h3>
+					</div>
+					<div class="footer-text mt-4">
+						<p>Address : 1234 lock, Charlotte, North Carolina, United States</p>
+						<p class="my-2">Phone : +12 534894364</p>
+						<p>Email : <a href="mailto:info@example.com">info@example.com</a></p>
+					</div>
+					<div class="footer-title mt-4 pt-md-2">
+						<h3>Payment Method</h3>
+					</div>
+					<ul class="list-unstyled payment-links mt-4">
+						<li>
+							<a href="login.html"><!--img src="" alt=""></a>
+						</li>
+						<li>
+							<a href="login.html"><img src="" alt=""></a>
+						</li>
+						<li>
+							<a href="login.html"><img src="" alt=""></a>
+						</li>
+						<li>
+							<a href="login.html"><img src="" alt=""--></a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-lg-4 footer-grid_section_1its">
+					<H3>ABOUT US</H3>
+					<div class="info-form-right mt-4 p-0">
+
+						Our organistaion works day and night  for you happiness
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

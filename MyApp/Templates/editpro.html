@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+<html lang="en">
+<head>
+
+
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+	<link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+</head>
+
+
+<body>
+
+
+
+<div class="container my-4">
+
+    <form action="#" method="post" enctype="multipart/form-data" class="text-center">
+        {% csrf_token %}
+
+        <input type="text" name="name" class="form-control d-inline-block w-50 my-2" value="{{DATA.name}}"  required>
+        <br>
+
+        <lebal>Brand :</lebal> {{DATA.brand}}
+        <select class="form-control d-inline-block w-50 my-2" name="brand" >
+        {% for j in Brand %}
+           <option   value="{{j.bname}}">{{j}}</option>
+        {% endfor %}
+        </select>
+        <br>
+        <lebal>Category  :</lebal> {{DATA.cat}}
+    <select class="form-control d-inline-block w-50 my-2" name="cat" >
+        {% for i in CAT %}
+           <option  value="{{i.cname}}">{{i}}</option>
+        {% endfor %}
+    </select>
+
+        <textarea class="form-control d-inline-block w-50 my-2" name="description" >{{DATA.description}}</textarea>
+                <input type="number" name="basic_price" class="form-control d-inline-block w-50 my-2"  value="{{DATA.basicPrice}}"  required>
+                <input type="number" name="discount" class="form-control d-inline-block w-50 my-2" value="{{DATA.discount}}" required>
+                <input type="number" name="price" class="form-control d-inline-block w-50 my-2" value="{{DATA.price}}" required>
+                <br>
+        {% for f in Size %}
+           <input type="checkbox" name="checks[]" value="{{f.sname}}" /> {{f.sname}} &nbsp;
+        {% endfor %}
+
+
+                                <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Image</label>
+                                                    <input type="file"   name="uimage1" value="{{DATA.img1.url}}"  >
+                                                </div>
+                                            </div>
+                                <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Image</label>
+                                                    <input type="file"   name="uimage2" value="{{DATA.img2.url}}"  >
+                                                </div>
+                                            </div>
+
+
+
+    <div>
+        <button type="submit" class="btn btn-info">Add Product</button>
+    </div>
+    </form>
+</div>
+    {% if messages %}
+        {% for i in messages %}
+            <div class="alert alert-primary text-center">{{i}}</div>
+        {% endfor %}
+    {% endif %}
+
+
+
+</body>
+
+
+</html>
+

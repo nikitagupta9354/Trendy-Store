@@ -1,0 +1,538 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <link rel="stylesheet" href="bootstrap.min.css">
+
+<!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"-->
+
+
+   <script type="text/javascript">
+
+      function = showbutton{
+         let btn = document.getElementsByTagName('button')[0] ;
+         btn.disabled = true ;
+         let radios = document.getElementsByName('selectaddr ') ;
+         radios.forEach((item) => {
+            item.onclick = function(){
+               if(btn.disabled){
+                  btn.disabled = false ;
+               }
+            }
+         })
+      }
+   </script>
+   <style>
+      .card.address{
+         width: 20rem ;height: 24rem; border-radius: 0.5rem; box-shadow: 0px 0px 5px 0px rgb(31, 31, 255);
+         background-color: rgb(240, 246, 250) ;
+      }
+      .delivery{
+         width: 20rem ;height: 24rem;
+         border: 0px ;
+      }
+      .delivery > .card-title{
+         border: 1px solid lightblue ;
+         border-radius: 5px ;
+      }
+      p.font-weight-light{
+         font-size: 8pt;
+      }
+            #leftbox {
+                float:left;
+
+                width:30%;
+                height:400px;
+            }
+            #middlebox{
+                float:left;
+
+                width:30%;
+                height:400px;
+            }
+            #rightbox{
+                float:right;
+
+                width:40%;
+                height:280px;
+            }
+            h1{
+                color:Hot-pink;
+                text-align:center;
+            }
+   </style>
+</head>
+
+<body style="background-color:#FFEBCD;">
+
+<div id = "boxes">
+            <h1> Select Address</h1>
+
+            <div id = "leftbox">
+
+{% for i in Data %}
+    {% if forloop.counter == 1 %}
+   <div class="container mt-5">
+      <div class="row align-items-center">
+         <div class="col mx-1">
+            <div class="card address" style="background-color:#E6E6FA;">
+               <div class="card-title font-weight-bold p-3 m-0">
+                  <div class="row p-0">
+                     <div class="col-2"><input type="radio" name="selectaddr " id="addr {{forloop.counter}}" onclick="showbutton" ></div>
+                     <div class="col-8 p-0" style="font-size:22px"><h3>Address 1</h3></div>
+                  </div>
+               </div>
+               <div class="card-body font-weight-light px-3 pb-0">
+                  <div class="row p-0 h-75">
+                     <div class="col-2"></div>
+                     <div class="col-8 p-0 addr">
+                        <p style="font-size:22px;">
+                         {{i.address_street}}
+                        </p>
+                        <p style="font-size:22px">
+                         {{i.address_state}}
+                        </p>
+                        <p style="font-size:22px">
+                         {{i.address_city}}
+                        </p>
+
+                        <form method="post" action="#">
+                          {% csrf_token %}
+
+                         <input type="hidden" name="uname"  class="input" value="{{ user.user.username }} " required>
+                         <input type="hidden" name="mobno"  class="input" value="{{ user.mobile_no }} " required>
+                         <input type="hidden" name="email"  class="input" value="{{ user.user.email }} " required>
+                         <input type="hidden" name="state"  class="input" value="{{ i.address_state}} " required>
+                         <input type="hidden" name="city"  class="input" value="{{ i.address_city}} " required>
+                         <input type="hidden" name="pin"  class="input" value="{{ i.address_pin }} " required>
+                         <input type="hidden" name="address"  class="input" value="{{ i.address_street }} " required>
+
+                          <center>  <button class="btn btn-primary font-weight-bold" type="submit" style="background-color:pink;" formaction="/invoice/{{user.user.username}}/{{i.address_city}}/{{i.address_state}}/{{i.address_street}}/{{i.address_pin}}/" >CONTINUE</button>
+
+                          </center>
+                        </form>
+
+
+                     </div>
+                  </div>
+                 <!-- <div class="row p-0">
+                     <div class="col-2"></div>
+                     <div class="col-8 p-0 addr font-weight-bold text-center">
+                        <a href="" class="card-link">REMOVE</a>
+                        <a href="/select_address/add_other_address/{{i.address_user}}"> ADD </a>
+                     </div>
+                  </div> -->
+               </div>
+            </div>
+         </div>
+
+
+         <div class="col mx-1">
+            <div class="card delivery">
+               <div class="card-title font-weight-bold p-3 m-0">
+                  <div class="row p-0">
+                     <div class="col-2"></div>
+                     <div class="col-8 p-0">
+                        <p class="mb-0">
+                           Standard Delivery
+                        </p>
+                        <p class="font-weight-light">
+                           Get it by 15 Jan | Delivery Charges Rs. 140
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="card-body font-weight-light p-0 mt-3">
+                  <p class="font-weight-light">
+                     ESTIMATED DELIVERY DATE
+                  </p>
+                  <p>
+
+                  </p>
+
+         </div>
+      </div>
+   </div>
+          {% endif %}
+                {% endfor %}
+
+            </div>
+   </div>
+            </div>
+
+
+
+     <div id = "middlebox">
+                   <div class="container mt-5">
+    {% for j in Data %}
+        {% if forloop.counter == 2 %}
+
+      <div class="row align-items-center">
+         <div class="col mx-1">
+            <div class="card address" style="background-color:#E6E6FA;">
+               <div class="card-title font-weight-bold p-3 m-0">
+                  <div class="row p-0">
+                     <div class="col-2"><input type="radio" name="selectaddr " id="addr {{forloop.counter}}" onclick="showbutton" ></div>
+                      <div class="col-8 p-0" style="font-size:22px"><h3>Address 2</h3></div>
+                  </div>
+               </div>
+               <div class="card-body font-weight-light px-3 pb-0">
+                  <div class="row p-0 h-75">
+                     <div class="col-2"></div>
+                     <div class="col-8 p-0 addr">
+                        <p style="font-size:22px">
+                           {{j.address_street}}
+                        </p>
+                        <p style="font-size:22px">
+                            {{j.address_state}} </center>
+                        </p>
+                        <p style="font-size:22px">
+                          {{j.address_city}} </center>
+                        </p>
+
+                        <form method="post" action="#">
+                          {% csrf_token %}
+
+                         <input type="hidden" name="uname"  class="input" value="{{ user.user.username }} " required>
+                         <input type="hidden" name="mobno"  class="input" value="{{ user.mobile_no }} " required>
+                         <input type="hidden" name="email"  class="input" value="{{ user.user.email }} " required>
+                         <input type="hidden" name="state"  class="input" value="{{ j.address_state}} " required>
+                         <input type="hidden" name="city"  class="input" value="{{ j.address_city}} " required>
+                         <input type="hidden" name="pin"  class="input" value="{{ j.address_pin }} " required>
+                         <input type="hidden" name="address"  class="input" value="{{ j.address_street }} " required>
+
+                         <center>   <button class="btn btn-primary font-weight-bold" type="submit" style="background-color:pink;" formaction="/invoice/{{user.user.username}}/{{j.address_city}}/{{j.address_state}}/{{j.address_street}}/{{j.address_pin}}/" >CONTINUE</button>
+                         </center>
+                        </form>
+
+
+                     </div>
+                  </div>
+                <!--  <div class="row p-0">
+                     <div class="col-2"></div>
+                     <div class="col-8 p-0 addr font-weight-bold text-center">
+                        <a href="" class="card-link">REMOVE</a>
+
+                     </div>
+                  </div> -->
+               </div>
+            </div>
+         </div>
+
+
+         <div class="col mx-1">
+            <div class="card delivery">
+               <div class="card-title font-weight-bold p-3 m-0">
+                  <div class="row p-0">
+                     <div class="col-2"></div>
+                     <div class="col-8 p-0">
+                        <p class="mb-0">
+                           Standard Delivery
+                        </p>
+                        <p class="font-weight-light">
+                           Get it by 15 Jan | Delivery Charges Rs. 140
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="card-body font-weight-light p-0 mt-3">
+                  <p class="font-weight-light">
+                     ESTIMATED DELIVERY DATE
+                  </p>
+                  <p>
+
+                  </p>
+
+         </div>
+      </div>
+   </div>
+
+
+            </div>
+                         {% endif %}
+    {% endfor %}
+   </div>
+
+
+            </div>
+
+    <div id="rightbox">
+
+            <div class="container-fluid">
+        <div class="row">
+
+            <div class="  col-sm-12 col-lg-8 col-md-10 bg-white bg-light px-4 text-uppercase">
+                <!--Available Address-->
+                <div class="p-3 bg-white rounded shadow-sm">
+                    <div class="bg-dark text-white px-4 py-3 text-uppercase font-weight-bold">Checkout</div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">Name</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">Mobile</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-1 text-uppercase">Email</div>
+                                </th>
+
+                            </tr>
+                            </thead>
+                            <tbody class="checkout-address" style="font-weight: 500">
+
+                                <tr>
+                                    <td class="border-0 align-middle">
+
+                                        {{ user.user.first_name }}  {{ user.user.last_name }}
+
+                                    </td>
+                                    <td class="border-0 align-middle">
+
+                                        {{ user.mobile_no }}
+
+                                    </td>
+                                    <td class="border-0 align-middle">
+
+                                        {{ user.user.email }}
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <div class="py-3 p-3 bg-white rounded shadow-sm">
+                        <div class="bg-light px-4 py-3 text-uppercase font-weight-bold">Final Order summary</div>
+                        <div class="p-4">
+                            <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you
+                                have entered.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Order Subtotal </strong><strong>&#8377; {{ gtot }}</strong>
+                                </li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Shipping and handling</strong><strong>Free</strong></li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Total</strong>
+                                    <h5 class="font-weight-bold">&#8377;{{ gtot }}</h5>
+                                </li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Mode Of Delivery</strong>
+                                    <h5 class="inputBox">
+                                        <select name="choice" class="input pt-0">
+                                        <option value="COD">Cash On Delivery</option>
+                                        </select>
+                                    </h5>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+
+
+</div>
+
+ <!--div class="col-lg-4">
+                <!--form action="#" method="post"-->
+                    {% csrf_token %}
+                    <!--div class="py-3 p-3 bg-white rounded shadow-sm">
+                        <div class="bg-light px-4 py-3 text-uppercase font-weight-bold">Final Order summary</div>
+                        <div class="p-4">
+                            <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you
+                                have entered.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Order Subtotal </strong><strong>&#8377;{{ Total }}</strong>
+                                </li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Shipping and handling</strong><strong>Free</strong></li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Total</strong>
+                                    <h5 class="font-weight-bold">&#8377;{{ Total }}</h5>
+                                </li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Mode Of Delivery</strong>
+                                    <h5 class="inputBox">
+                                        <select name="choice" class="input pt-0">
+                                        <option value="COD">Cash On Delivery</option>
+                                        </select>
+                                    </h5>
+                                </li>
+                            </ul>
+                            <button style="color:#ff3b9f"><a href="/invoice/">Place Order
+                            </a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+{% for i in Data %}
+   <div class="container mt-5">
+      <div class="row align-items-center">
+         <div class="col mx-1">
+            <div class="card address">
+               <div class="card-title font-weight-bold p-3 m-0">
+                  <div class="row p-0">
+                     <div class="col-2"><input type="radio" name="selectaddr " id="addr {{forloop.counter}}" onclick="showbutton" ></div>
+                     <div class="col-8 p-0">Address 1</div>
+                  </div>
+               </div>
+               <div class="card-body font-weight-light px-3 pb-0">
+                  <div class="row p-0 h-75">
+                     <div class="col-2"></div>
+                     <div class="col-8 p-0 addr">
+                        <p>
+                           {{i.address_street}}
+                        </p>
+                        <p>
+                           {{i.address_state}}
+                        </p>
+                        <p>
+                           {{i.address_city}}
+                        </p>
+                        <p>
+                           {{i.address_user}}
+                        </p>
+                        <form method="post" action="#">
+                          {% csrf_token %}
+
+                         <input type="text" name="uname"  class="input" value="{{ user.user.username }} " required>
+                         <input type="text" name="mobno"  class="input" value="{{ user.mobile_no }} " required>
+                         <input type="text" name="email"  class="input" value="{{ user.user.email }} " required>
+                         <input type="text" name="state"  class="input" value="{{ i.address_state}} " required>
+                         <input type="text" name="city"  class="input" value="{{ i.address_city}} " required>
+                         <input type="text" name="pin"  class="input" value="{{ i.address_pin }} " required>
+                         <input type="text" name="address"  class="input" value="{{ i.address_street }} " required>
+
+                            <button class="btn btn-primary font-weight-bold" type="submit">CONTINUE</button>
+
+                        </form>
+
+
+                     </div>
+                  </div>
+                  <div class="row p-0">
+                     <div class="col-2"></div>
+                     <div class="col-8 p-0 addr font-weight-bold text-center">
+                        <a href="" class="card-link">REMOVE</a>
+                        <a href="/select_address/add_other_address/{{i.address_user}}"> ADD </a>
+                     </div>                  
+                  </div>
+               </div>
+            </div>
+         </div>
+
+
+         <div class="col mx-1">
+            <div class="card delivery">
+               <div class="card-title font-weight-bold p-3 m-0">
+                  <div class="row p-0">
+                     <div class="col-2"><input type="radio" name="deliveryspeed" checked></div>
+                     <div class="col-8 p-0">
+                        <p class="mb-0">
+                           Standard Delivery
+                        </p>
+                        <p class="font-weight-light">
+                           Get it by 15 Jan | Delivery Charges Rs. 140
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="card-body font-weight-light p-0 mt-3">
+                  <p class="font-weight-light">
+                     ESTIMATED DELIVERY DATE
+                  </p>
+                  <p>
+                     <img src="" alt="img" width="20" height="20">
+                  </p>
+
+         </div>
+      </div>
+   </div>
+                {% endfor %}
+-->
+
+</body>
+</html>

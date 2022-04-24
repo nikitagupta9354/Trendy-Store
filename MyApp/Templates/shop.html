@@ -1,0 +1,328 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>Product</title>
+    <!--Favicon -->
+    <link rel="icon" href="{% static 'ico/ico.png' %}">
+
+    <!--Bootstrap Css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <!--link rel="stylesheet" href="{% static 'css/style.css' %}"-->{% endblock title %}
+</head>
+<style>
+ul.sidenav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    height: 76%;
+    background-color: #f1f1f1;
+    position: absolute;
+    float: left;
+    margin-left: -1%;
+    overflow: -moz-scrollbars-vertical;
+    -webkit-border-radius: 1%;
+    -moz-border-radius: 1%;
+    border-radius: 1%;
+    overflow: auto;
+
+}
+
+ul.sidenav li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+
+ul.sidenav li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    ul.sidenav {
+        display: none;
+    }
+}
+
+    .navbar{
+font-size: 20px;
+font-weight: 780;
+	font-size: .95rem;
+	letter-spacing: .1rem;
+
+
+}
+.navbar-light .navbar-nav .nav-link
+{ font-family: 'Raleway', Helvetica, Arial, sans-serif;
+ color: black;
+padding-top: 1.4rem;
+}
+
+ .navbar-brand {
+
+  color: #d7e2e9;
+ padding-top: 1.4rem;
+}
+
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+     color:#ff3b9f;
+
+
+}
+
+</style>
+<body>
+{% block body %}
+    <!-- The flexible grid (content) -->
+<nav class="navbar navbar-expand-lg navbar-light">
+<div  style="color:#321232;">
+	<a class="navbar-brand" >
+		<i class="fa fa-heart" style="color:#ab186e;"></i>
+		The Trendy Store
+</a>
+</div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li>
+        <a class="nav-link" href="/sop/sample/">Products</a>
+      </li>
+
+		{% if user.is_authenticated %}
+		 <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink31" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user}} </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink31">
+                                <a class="dropdown-item" href="/logout/"> <i class="fa fa-user"></i>Log Out</a>
+								<a class="dropdown-item" href="/c/"><i class="fa fa-shopping-cart"> </i>Cart</a>
+								 <a class="dropdown-item" href="/wishlist/"><i class="fa fa-heart"></i>Orders</a>
+                            </div>
+			 </li>
+			 {% else %}
+			  <a class="nav-link " href="/login/" tabindex="-1" aria-disabled="true" class="floatRight">Login</a>
+			 {% endif %}
+
+      <li class="nav-item">
+<a class="nav-link " href="/signup/" tabindex="-1" aria-disabled="true" class="floatRight">Sign Up</a>
+      </li>
+ <li class="nav-item">
+	 {% if user.is_authenticated %}
+        <a class="nav-link " href="/profile/{{user}}" tabindex="-1" aria-disabled="true" class="floatRight">Profile</a>
+	 {% endif %}
+ </li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		 <li> <form class="form-inline my-7 my-lg-0" method="post">
+            {% csrf_token %}
+                    <input class="form-control mr-sm-4" name="search" type="text" placeholder="Search" aria-label="Search" class="floatRight">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                </form > </li>
+
+    </ul>
+
+  </div>
+</nav>
+
+    <div class="container-fluid">
+        <ul class="sidenav">
+            <li><h3><strong></strong></h3></li>
+            <li><h5 style="padding-left: 6px">CATEGORIES</h5></li>
+            {% for i in Cat %}
+                <li><a href="/sop/{{ i.cname }}/">{{ i.cname }}</a></li>
+            {% endfor %}
+            <li><h5 style="padding-left: 6px">BRAND</h5></li>
+            {% for i in Brand %}
+
+                        <li><a href="/sop2/{{ i.bname }}/">
+                            {{ i.bname }}</a></li>
+
+                {% endfor %}
+        </ul>
+    </div>
+
+    <div style="margin-left:18%;">
+    <h2>{{ No }}</h2>
+        <!-- The flexible grid (content) -->
+        <div class="container-fluid">
+            <div class="row">
+{% for i in Data %}
+                    <div class="col-lg-3 col-md-4 col-sm-6  d-flex ">
+                        <div class="card-deck" style="padding-bottom: 2%">
+                            <div class="card ">
+                                <a href="/pdetails/{{ i.pid }}">
+                                <img src=" {{i.img1.url }}" class="card-img-top img-fluid" style="height: 320px;width: 300px;" alt="abc">
+                                <div class="card-body">
+                                    <h5 class="card-title ctm-color" style="height: 100%;color: black">{{ i.name }}</h5>
+                                </div></a>
+                                <div class="card-footer">
+                                    <small><b>Rs. {{ i.price }}</b></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+{% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mb-10 " style="margin-top: 5vh">
+        <div class="row`">
+            <div class="col-xs-12">
+                {% if posts.has_other_pages %}
+                    <ul class="pagination justify-content-sm-center">
+                        {% if posts.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page={{ posts.previous_page_number }}">&laquo;</a>
+                            </li>
+                        {% else %}
+                            <li class="disabled page-item"><a class="page-link"> <span>First</span></a></li>
+                        {% endif %}
+                        {% for i in posts.paginator.page_range %}
+                            {% if posts.number == i %}
+                                <li class="active page-item"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+                                </li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if posts.has_next %}
+                            <li class="page-item"><a class="page-link"
+                                                     href="?page={{ posts.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                            <li class="disabled page-item"><span><a class="page-link">Last</a> </span></li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<footer class="py-5">
+		<div class="container py-xl-4">
+			<div class="row footer-top">
+				<div class="col-lg-4 footer-grid_section_1its footer-text">
+					<!-- logo -->
+					<h2>
+						<a class="logo text-wh" href="index.html">
+							<img src="images/logo.png" alt="" class="img-fluid"><span>Tasty</span> Burger
+						</a>
+					</h2>
+					<!-- //logo -->
+					<p class="mt-lg-4 mt-3 mb-lg-5 mb-4">Sed ut perspiciatis unde omnis iste natus errorhjhsit lupt
+						atem
+						accursit lupt atem accu
+						dfdsa
+						ntium doloremque laudan tium accu santium dolore.</p>
+					<!-- social icons -->
+					<ul class="top-right-info">
+						<li>
+							<p>Follow As:</p>
+						</li>
+						<li class="facebook-w3">
+							<a href="#facebbok">
+								<span class="fa fa-facebook-f"></span>
+							</a>
+						</li>
+						<li class="twitter-w3">
+							<a href="#twitter">
+								<span class="fa fa-twitter"></span>
+							</a>
+						</li>
+						<li class="google-w3">
+							<a href="#google">
+								<span class="fa fa-google-plus"></span>
+							</a>
+						</li>
+						<li class="dribble-w3">
+							<a href="#dribble">
+								<span class="fa fa-dribbble"></span>
+							</a>
+						</li>
+					</ul>
+					<!-- //social icons -->
+				</div>
+				<div class="col-lg-4 footer-grid_section_1its my-lg-0 my-sm-4 my-4">
+					<div class="footer-title">
+						<h3>Contact Us</h3>
+					</div>
+					<div class="footer-text mt-4">
+						<p>Address : 1234 lock, Charlotte, North Carolina, United States</p>
+						<p class="my-2">Phone : +12 534894364</p>
+						<p>Email : <a href="mailto:info@example.com">info@example.com</a></p>
+					</div>
+					<div class="footer-title mt-4 pt-md-2">
+						<h3>Payment Method</h3>
+					</div>
+					<ul class="list-unstyled payment-links mt-4">
+						<li>
+							<a href="login.html"><!--img src="" alt=""></a>
+						</li>
+						<li>
+							<a href="login.html"><img src="" alt=""></a>
+						</li>
+						<li>
+							<a href="login.html"><img src="" alt=""></a>
+						</li>
+						<li>
+							<a href="login.html"><img src="" alt=""--></a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-lg-4 footer-grid_section_1its">
+					<H3>ABOUT US</H3>
+					<div class="info-form-right mt-4 p-0">
+
+						Our organistaion works day and night  for you happiness
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+{% endblock %}
+
+</body>
+</html>
